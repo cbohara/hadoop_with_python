@@ -8,5 +8,5 @@ client = Client('localhost', 9000)
 
 # list the content of the HDFS root directory
 # note that many methods in snakebite returns generators 
-for x in client.ls(['/']):
+for x in client.ls(['/user/cbohara']):
     print x
