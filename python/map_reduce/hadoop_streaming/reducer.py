@@ -19,6 +19,7 @@ for line in sys.stdin:
         # write the word and its occurances as key-value to stdout
         if curr_word:
             print '{0}\t{1}'.format(curr_word, curr_count)
+
         # update curr_word and continue traversing through input file
         curr_word = word
         curr_count = count
