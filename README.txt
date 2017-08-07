@@ -47,4 +47,7 @@ can write mapper and reducer in Python scripts instead of using Java
 
 mapper and reducer are executable files that read input line by line from stdin and write output to stdout
 
+test word count locally first
+$ echo 'jack be nimble jack be quick' | ./mapper.py | sort -t 1 | ./reducer.py
+
 
