@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from mrjob.job import MRJob
 from mrjob.step import MRStep
@@ -9,10 +9,16 @@ columns = ['Name', 'JobTitle', 'AgencyID', 'Agency', 'HireDate', 'AnnualSalary',
 class salarymax(MRJob):
     def mapper(self, _, line):
         # create array from csv line and then zip the column name to the value and create a dictionary
-        row = dict(zip(columns, [x.strip() for x in csv.reader([line]).next()]))
+        row = dict(list(zip(columns, [x.strip() for x in next(csv.reader([line]))])))
+        print(row)
+
 
         # key is salary and value is tuple with (salary value, all info in line)
-        yield 'salary', (float(row['AnnualSalary'][1:]), line)
+        try:
+            yield 'salary', (float(row['AnnualSalary'][1:]), line)
+        # fixed bug - for one salary it was 'nnualSalary' which obviously cannot be converted to float
+        except ValueError:
+            self.increment_counter('warn', 'unnessary row', 1)
 
         # attempt to generate key-value pair for gross as well
         try:
