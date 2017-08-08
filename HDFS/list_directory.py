@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python
 from snakebite.client import Client
 
 # this line creates the client connection to the HDFS NameNode

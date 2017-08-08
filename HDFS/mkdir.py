@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python
 from snakebite.client import Client
 
 client = Client('localhost', 9000)
