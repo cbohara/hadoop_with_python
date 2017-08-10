@@ -50,4 +50,3 @@ class salarymax(MRJob):
 
 if __name__ == "__main__":
     salarymax.run()
-
