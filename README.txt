@@ -113,8 +113,9 @@ Chapter 3 - Pig
 ########
 TOKENIZE
 ########
-    splits a string contained in a tuple
-    into a bag of words with each word in a single tuple
+
+splits a string contained in a tuple
+into a bag of words with each word in a single tuple
 
 
 A  = LOAD 'data' AS (f1:chararray);
@@ -134,9 +135,10 @@ DUMP X;
 #######
 FLATTEN
 #######
-    for tuples - flatten substitutes the fields of a tuple in place of the tuple
-        ex: (a, (b, c)) > GENERATE $0, FLATTEN($1) > (a, b, c)
-    
-    for bags - un-nest a bag to create new tuples
-        ex: ({(b, c), (d, e)}) > GENERATE FLATTEN($0) > (b,c), (d, e)
+
+for tuples - flatten substitutes the fields of a tuple in place of the tuple
+    ex: (a, (b, c)) > GENERATE $0, FLATTEN($1) > (a, b, c)
+
+for bags - un-nest a bag to create new tuples
+    ex: ({(b, c), (d, e)}) > GENERATE FLATTEN($0) > (b,c), (d, e)
 
