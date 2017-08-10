@@ -38,16 +38,49 @@ reducer function will iterate through the values and find the maximum temp
 (1950, 22)
 
 
-################
-Hadoop Streaming
-################
+######################################################
+Chapter 2 - MapReduce with Hadoop Streaming and Python
+######################################################
 
-allows MapReduce programs to be ran with any executable or script
+Hadoop Streaming allows MapReduce programs to be ran with any executable or script
 can write mapper and reducer in Python scripts instead of using Java
 
 mapper and reducer are executable files that read input line by line from stdin and write output to stdout
 
 test word count locally first
 $ echo 'jack be nimble jack be quick' | ./mapper.py | sort -t 1 | ./reducer.py
+
+###############
+Chapter 3 - Pig
+###############
+
+#########################################################
+TOKENIZE
+    splits a string contained in a tuple
+    into a bag of words with each word in a single tuple
+
+
+A  = LOAD 'data' AS (f1:chararray);
+
+DUMP A;
+(Here is the first string.)
+(Here is the second string.)
+(Here is the third string.)
+
+X = FOREACH A GENERATE TOKENIZE(f1);
+
+DUMP X;
+({(Here),(is),(the),(first),(string.)})
+({(Here),(is),(the),(second),(string.)})
+({(Here),(is),(the),(third),(string.)})
+
+#########################################################
+
+FLATTEN
+    for tuples - flatten substitutes the fields of a tuple in place of the tuple
+        ex: (a, (b, c)) > GENERATE $0, FLATTEN($1) > (a, b, c)
+    
+    for bags - un-nest a bag to create new tuples
+        ex: ({(b, c), (d, e)}) > GENERATE FLATTEN($0) > (b,c), (d, e)
 
 
