@@ -110,6 +110,12 @@ mr job
 Chapter 3 - Pig
 ###############
 
+pig -x local
+uses single local machine
+
+cat pig_output/*
+allows me to view the HDFS output on local machine
+
 ########
 TOKENIZE
 ########
