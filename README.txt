@@ -110,8 +110,9 @@ mr job
 Chapter 3 - Pig
 ###############
 
-#########################################################
+########
 TOKENIZE
+########
     splits a string contained in a tuple
     into a bag of words with each word in a single tuple
 
@@ -130,9 +131,9 @@ DUMP X;
 ({(Here),(is),(the),(second),(string.)})
 ({(Here),(is),(the),(third),(string.)})
 
-#########################################################
-
+#######
 FLATTEN
+#######
     for tuples - flatten substitutes the fields of a tuple in place of the tuple
         ex: (a, (b, c)) > GENERATE $0, FLATTEN($1) > (a, b, c)
     
