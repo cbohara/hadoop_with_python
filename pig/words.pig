@@ -1,6 +1,6 @@
 -- when data is read into pig the default data type is bytearray
 
-records = LOAD '/Users/charlieohara/github/cbohara/hadoop_with_python/data/testing.txt';
+records = LOAD '/Users/hduser/code/hadoop_with_python/data/input.txt';
 
 -- (chararray)$0 will cast bytearray to chararray
 -- (jack be nimble jack be quick)
@@ -55,4 +55,4 @@ word_counts = FOREACH grouped_terms GENERATE COUNT(terms), group;
 
 -- cannot store into folder that already exists 
 -- need to create folder for output
-STORE word_counts INTO '/Users/charlieohara/github/cbohara/hadoop_with_python/data/pig_output/';
+STORE word_counts INTO '/Users/hduser/code/hadoop_with_python/data/pig_output';
