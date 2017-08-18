@@ -37,6 +37,35 @@ reducer function will iterate through the values and find the maximum temp
 (1949, 111)
 (1950, 22)
 
+######################################################
+MapReduce framework notes
+http://ercoppa.github.io/HadoopInternals/
+######################################################
+
+YARN Resource Manager = 1 per cluster = master
+    know where slaves are located
+    know how many resources each slave has
+    runs Resource Scheduler = decides how to assign resources
+
+YARN Node Managers = many per cluster = slaves
+    each Node Manager offers resources to the cluster
+    the Resource Scheduler decides how to use the slave's capacity
+    each Container is a fraction of the Node Manager capacity and is used by client for running programs
+
+Application Master
+    responsible for execution of a single application
+    it asks for containers to the Resource Manager
+    executes programs on container
+
+application startup process:
+submit app to YARN Resource Manager (on master node) >
+Resource Manager allocates a container (fraction of node)  >
+Resource Manager contacts the related Node Manager > 
+Node Manager launches a container >
+contaienr executes the Application Master
+
+
+
 
 ######################################################
 Chapter 2 - MapReduce with Hadoop Streaming and Python
@@ -49,6 +78,25 @@ mapper and reducer are executable files that read input line by line from stdin 
 
 test word count locally first
 $ echo 'jack be nimble jack be quick' | ./mapper.py | sort -t 1 | ./reducer.py
+
+##############################################################################
+Notes from Hadoop documentation
+https://hadoop.apache.org/docs/r1.2.1/streaming.html
+##############################################################################
+
+
+both mapper and reducer are executables that read the input from stdin (line by line) and emit output to stdout
+Hadoop streaming utility will create MapReduce job > submits job to cluster > monitor progress
+
+
+the number of files inside the input directory is used to decide the number of Map Tasks of a job
+
+mappers
+Hadoop launches mapper executable as a process
+input file > mapper executable > converts input file into lines + executes task on each line
+mapper.py collects line oriented outputs from stdout > converts each line into key/value pair
+Hadoop collects key/value pair output
+
 
 ##############################################################################
 Notes from MRJob documentation
