@@ -144,6 +144,8 @@ Hadoop streaming
     sends same key-value to same combiner/reducer as ("key1", [value1, value2]) > 
     combiner/reducer stdout "key1", value1+value2
 
+$HADOOP_HOME/bin/hadoop jar /Users/hduser/tools/hadoop-2.7.3/share/hadoop/tools/lib/hadoop-streaming-2.7.3.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input /user/hduser/input.txt -output /user/hduser/output/
+
 mr job
     python mr_job.py input.txt -r [inline | local | hadoop | emr]
         inline = default = single Python process
