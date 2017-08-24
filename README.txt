@@ -66,6 +66,20 @@ contaienr executes the Application Master
 
 
 
+################################################################################
+Partioning notes
+https://www.tutorialspoint.com/map_reduce/map_reduce_partitioner.htm
+################################################################################
+
+partitioner 
+divides the key-value pairs of the intermediate map output 
+using a user-defined condition
+ex: if age < 20 go to 1 reducer, else if age > 20 go to another reducer
+
+partition phase 
+takes place after map phase and before reduce phase
+# of partitioners = # reducers
+
 
 ######################################################
 Chapter 2 - MapReduce with Hadoop Streaming and Python
